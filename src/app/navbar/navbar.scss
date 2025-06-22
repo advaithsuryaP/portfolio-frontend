@@ -1,0 +1,46 @@
+.sidebar-nav {
+    padding: var(--mat-sys-spacing-24);
+
+    .nav-container {
+        display: flex;
+        flex-direction: row;
+        gap: var(--mat-sys-spacing-16);
+        justify-content: center;
+        align-items: center;
+
+        // Large screens and up - vertical layout
+        @media (min-width: 1024px) {
+            flex-direction: column;
+            gap: var(--mat-sys-spacing-12);
+            justify-content: flex-start;
+            align-items: stretch;
+        }
+    }
+
+    .nav-item {
+        font: var(--mat-sys-label-large);
+        text-transform: lowercase;
+        padding: var(--mat-sys-spacing-12) var(--mat-sys-spacing-24);
+        min-height: 48px;
+        border-radius: var(--mat-sys-shape-corner-medium);
+        transition: all 0.2s ease;
+        text-align: center;
+        justify-content: center;
+
+        // Small and medium screens - horizontal buttons
+        @media (max-width: 1023px) {
+            min-width: 120px;
+        }
+
+        // Large screens and up - full width buttons
+        @media (min-width: 1024px) {
+            width: 100%;
+        }
+
+        &.active {
+            background-color: var(--mat-sys-primary-container);
+            color: var(--mat-sys-on-primary-container);
+            font-weight: 500;
+        }
+    }
+}

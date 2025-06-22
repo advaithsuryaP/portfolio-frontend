@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html {
+    @include mat.theme(
+        (
+            color: (
+                theme-type: light,
+                primary: mat.$azure-palette,
+                tertiary: mat.$blue-palette,
+            ),
+            typography: (
+                plain-family: "Open Sans",
+                brand-family: "Open Sans",
+                bold-weight: 900,
+                medium-weight: 500,
+                regular-weight: 300,
+            ),
+            density: 0,
+        )
+    );
+}
+
+html,
+body {
+    height: 100%;
+}
+
+h1 {
+    font: var(--mat-sys-display-large);
+}
+
+h2 {
+    font: var(--mat-sys-headline-large);
+}
+
+h3 {
+    font: var(--mat-sys-headline-medium);
+}
+
+h4 {
+    font: var(--mat-sys-headline-small);
+}
+
+p {
+    font: var(--mat-sys-body-large);
+}
+
+label {
+    font: var(--mat-sys-label-large);
+}

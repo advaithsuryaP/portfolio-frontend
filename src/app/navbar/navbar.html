@@ -1,0 +1,14 @@
+<nav class="sidebar-nav">
+    <div class="nav-container">
+        @for (item of navigationItems; track item.label) {
+        <button
+            mat-button
+            class="nav-item"
+            [routerLink]="item.route"
+            [routerLinkActive]="['active']"
+        >
+            {{ item.label }}
+        </button>
+        }
+    </div>
+</nav>
