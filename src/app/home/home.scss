@@ -23,14 +23,14 @@
 
 .main-content {
     flex: 1;
-    padding: var(--mat-sys-spacing-24);
+    padding: 2rem;
     // Small and medium screens - add some spacing from sidebar
     @media (max-width: 1023px) {
-        margin-top: var(--mat-sys-spacing-16);
+        margin-top: 1rem;
     }
 
     // Large screens and up - add left margin for spacing
     @media (min-width: 1024px) {
-        margin-left: var(--mat-sys-spacing-16);
+        margin-left: 1rem;
     }
 }

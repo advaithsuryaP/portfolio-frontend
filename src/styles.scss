@@ -46,6 +46,18 @@ p {
     font: var(--mat-sys-body-large);
 }
 
+p.fs-medium {
+    font: var(--mat-sys-body-medium);
+}
+
+p.fs-small {
+    font: var(--mat-sys-body-small);
+}
+
 label {
     font: var(--mat-sys-label-large);
+}
+
+label.fs-medium {
+    font: var(--mat-sys-label-medium);
 }

@@ -1,0 +1,11 @@
+.panel-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+:host ::ng-deep .mat-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

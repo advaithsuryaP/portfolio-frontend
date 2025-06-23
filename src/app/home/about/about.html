@@ -1,16 +1,22 @@
-<div class="container">
-    <div class="headline">
-        <div class="name">
-            <h2>Advaith Pandravada</h2>
-        </div>
-
-        <div class="description">
-            <mat-slide-toggle labelPosition="before" [(ngModel)]="showPersonalView">
-                <div class="toggle">
-                    {{showPersonalView ? 'okay but who am I really?' : 'idc, resume please'}}
-                    <mat-icon>arrow_forward</mat-icon>
-                </div>
-            </mat-slide-toggle>
-        </div>
+<div class="headline">
+    <div class="name">
+        <h2>Advaith Pandravada</h2>
     </div>
+
+    <div class="description">
+        <mat-slide-toggle labelPosition="before" [(ngModel)]="showPersonalView">
+            <div class="toggle">
+                {{showPersonalView ? 'okay but who am I really?' : 'idc, resume please'}}
+                <mat-icon>arrow_forward</mat-icon>
+            </div>
+        </mat-slide-toggle>
+    </div>
+</div>
+
+<div class="content">
+    @if (showPersonalView) {
+    <app-personal />
+    } @else {
+    <app-professional />
+    }
 </div>

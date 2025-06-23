@@ -1,24 +1,21 @@
-.container {
+.headline {
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 
-    .headline {
+    .name {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+    }
 
-        .name {
+    .description {
+        display: flex;
+        justify-content: flex-end;
+
+        .toggle {
             display: flex;
             align-items: center;
-        }
-
-        .description {
-            display: flex;
-            justify-content: flex-end;
-
-            .toggle {
-                display: flex;
-                align-items: center;
-            }
         }
     }
 }
