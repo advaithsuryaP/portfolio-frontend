@@ -12,5 +12,5 @@ import { Professional } from './professional/professional';
     styleUrl: './about.scss'
 })
 export default class About {
-    showPersonalView: boolean = false;
+    showProfessionalView: boolean = true;
 }

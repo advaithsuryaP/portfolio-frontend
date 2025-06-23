@@ -1,32 +1,40 @@
-<h4>Work Experience</h4>
+<h4 class="mb-4">Work Experience</h4>
 <mat-accordion>
     <!-- Ardent Privacy -->
     @for (experience of experiences$ | async; track experience.company) {
     <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
-            <label>{{ experience.company }}</label>
+            <div class="title">
+                <img [src]="experience.logo" alt="logo" class="logo" width="50" height="50" />
+                <label>{{ experience.company }}</label>
+            </div>
             <label class="fs-medium">{{ experience.fromDate }} - {{ experience.toDate }}</label>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
             @for (description of experience.description; track description) {
-            <label class="fs-medium">{{ description }}</label>
+            <label>{{ description }}</label>
             }
         </ng-template>
     </mat-expansion-panel>
     }
 </mat-accordion>
 
-<h4>Education</h4>
+<h4 class="mt-4 mb-4">Education</h4>
 <mat-accordion>
     @for (education of education$ | async; track education.institution) {
     <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header>
-            <label>{{ education.institution }}</label>
+            <div class="title">
+                <img [src]="education.logo" alt="logo" class="logo" width="30" height="30" />
+                <label>{{ education.institution }}</label>
+            </div>
             <label class="fs-medium">{{ education.fromDate }} - {{ education.toDate }}</label>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-            <label class="fs-medium">{{ education.degree }}</label>
+            <label>{{ education.degree }}</label>
         </ng-template>
     </mat-expansion-panel>
     }
 </mat-accordion>
+
+<h4 class="mt-4 mb-4">Certifications</h4>

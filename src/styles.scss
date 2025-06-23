@@ -1,4 +1,6 @@
 @use '@angular/material' as mat;
+@use './app/styles/spacing';
+@use './app/styles/variables';
 
 html {
     @include mat.theme(
@@ -23,7 +25,19 @@ html {
 html,
 body {
     height: 100%;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label {
     margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -40,6 +54,14 @@ h3 {
 
 h4 {
     font: var(--mat-sys-headline-small);
+}
+
+h5 {
+    font: var(--mat-sys-title-large);
+}
+
+h6 {
+    font: var(--mat-sys-title-medium);
 }
 
 p {
@@ -60,4 +82,17 @@ label {
 
 label.fs-medium {
     font: var(--mat-sys-label-medium);
+}
+
+// Colors
+.color-danger {
+    color: var(--mat-sys-error);
+}
+
+.color-primary {
+    color: var(--mat-sys-primary);
+}
+
+.color-tertiary {
+    color: var(--mat-sys-tertiary);
 }

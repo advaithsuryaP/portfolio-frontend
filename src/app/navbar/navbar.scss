@@ -1,17 +1,17 @@
 .sidebar-nav {
-    padding: var(--mat-sys-spacing-24);
+    padding: 2rem;
 
     .nav-container {
         display: flex;
         flex-direction: row;
-        gap: var(--mat-sys-spacing-16);
+        gap: 2rem;
         justify-content: center;
         align-items: center;
 
         // Large screens and up - vertical layout
         @media (min-width: 1024px) {
             flex-direction: column;
-            gap: var(--mat-sys-spacing-12);
+            gap: 1.5rem;
             justify-content: flex-start;
             align-items: stretch;
         }
@@ -20,9 +20,9 @@
     .nav-item {
         font: var(--mat-sys-label-large);
         text-transform: lowercase;
-        padding: var(--mat-sys-spacing-12) var(--mat-sys-spacing-24);
+        padding: 1.5rem 2rem;
         min-height: 48px;
-        border-radius: var(--mat-sys-shape-corner-medium);
+        border-radius: 0.5rem;
         transition: all 0.2s ease;
         text-align: center;
         justify-content: center;

@@ -1,12 +1,17 @@
 <div class="headline">
     <div class="name">
-        <h2>Advaith Pandravada</h2>
+        <h1>Advaith Pandravada</h1>
+        <h5>software engineer, sports enthusiast, can talk for hours</h5>
     </div>
 
-    <div class="description">
-        <mat-slide-toggle labelPosition="before" [(ngModel)]="showPersonalView">
+    <div class="description mt-4">
+        <mat-slide-toggle labelPosition="before" [(ngModel)]="showProfessionalView" class="color-tertiary">
             <div class="toggle">
-                {{showPersonalView ? 'okay but who am I really?' : 'idc, resume please'}}
+                @if (showProfessionalView) {
+                <p>okay but <span class="color-primary">who am I</span> really?</p>
+                } @else {
+                <p>idc, <span class="color-danger">resume</span> please</p>
+                }
                 <mat-icon>arrow_forward</mat-icon>
             </div>
         </mat-slide-toggle>
@@ -14,9 +19,9 @@
 </div>
 
 <div class="content">
-    @if (showPersonalView) {
-    <app-personal />
-    } @else {
+    @if (showProfessionalView) {
     <app-professional />
+    } @else {
+    <app-personal />
     }
 </div>

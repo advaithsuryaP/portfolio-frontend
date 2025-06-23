@@ -3,5 +3,6 @@ export interface Experience {
     position: string;
     fromDate: string;
     toDate: string;
+    logo: string;
     description: string[];
 }

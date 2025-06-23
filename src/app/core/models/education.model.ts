@@ -3,4 +3,5 @@ export interface Education {
     degree: string;
     fromDate: string;
     toDate: string;
+    logo: string;
 }

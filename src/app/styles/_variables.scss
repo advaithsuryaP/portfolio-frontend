@@ -1,0 +1,40 @@
+// --- Base Spacing Unit (4dp grid) ---
+// If your root HTML font-size is 16px (default for most browsers),
+// then 0.25rem = 4px. This is the Material Design 3 base spacing unit.
+$mat-spacing-unit: 0.25rem;
+
+// --- Material Design Breakpoints (for responsiveness) ---
+// These are standard breakpoints, often used by Angular Material's CDK BreakpointObserver
+$breakpoint-sm: 600px; // Small screens (e.g., Tablet portrait)
+$breakpoint-md: 960px; // Medium screens (e.g., Tablet landscape, small desktop)
+$breakpoint-lg: 1280px; // Large screens (e.g., Desktop)
+$breakpoint-xl: 1920px; // Extra large screens (e.g., Large desktop monitors)
+
+// You can define a map for easier iteration if you want to generate responsive classes
+$breakpoints: (
+    sm: $breakpoint-sm,
+    md: $breakpoint-md,
+    lg: $breakpoint-lg,
+    xl: $breakpoint-xl
+);
+
+// --- Spacing Scale (multiples of 4dp/0.25rem) ---
+// Define the actual values you'll use for your utility classes
+$spacing-values: (
+    0: 0,
+    1: calc(1 * $mat-spacing-unit),
+    // 4px
+    2: calc(2 * $mat-spacing-unit),
+    // 8px
+    3: calc(3 * $mat-spacing-unit),
+    // 12px
+    4: calc(4 * $mat-spacing-unit),
+    // 16px (common standard padding)
+    5: calc(6 * $mat-spacing-unit),
+    // 24px (common for component gaps/spacers)
+    6: calc(8 * $mat-spacing-unit),
+    // 32px
+    7: calc(12 * $mat-spacing-unit),
+    // 48px
+    8: calc(16 * $mat-spacing-unit) // 64px (for large section spacing)
+);
