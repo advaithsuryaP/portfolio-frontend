@@ -13,7 +13,7 @@ export class About {
             position: 'Software Engineer',
             fromDate: 'Jan 2024',
             toDate: 'June 2025',
-            logo: '/images/brands/placeholder.svg',
+            logo: '/images/brands/ardent-privacy.jpg',
             description: ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.']
         },
         {
@@ -49,7 +49,7 @@ export class About {
             degree: 'Bachelor of Technology in Computer Science and Engineering',
             fromDate: 'Jun 2014',
             toDate: 'May 2018',
-            logo: '/images/brands/placeholder.svg'
+            logo: '/images/brands/srm.png'
         }
     ];
     private _education$ = new BehaviorSubject<Education[]>(this._education);
