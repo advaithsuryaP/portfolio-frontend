@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
-@use './app/styles/spacing';
-@use './app/styles/variables';
+
+@import './styles/tailwind.css';
 
 html {
     @include mat.theme(
@@ -28,18 +28,6 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-label {
-    margin: 0;
-    padding: 0;
 }
 
 h1 {
