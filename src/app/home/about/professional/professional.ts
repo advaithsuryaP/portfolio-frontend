@@ -14,5 +14,4 @@ export class Professional {
     private _aboutService = inject(About);
 
     education$ = this._aboutService.education$;
-    experiences$ = this._aboutService.experiences$;
 }
