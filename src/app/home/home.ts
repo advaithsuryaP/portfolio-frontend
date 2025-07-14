@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from '../navbar/navbar';
+import { Sidebar } from '../core/components/sidebar/sidebar';
 
 @Component({
     selector: 'app-home',
-    imports: [RouterOutlet, Navbar],
+    imports: [RouterOutlet, Sidebar],
     templateUrl: './home.html',
     styleUrl: './home.scss',
 })
-export default class Home {}
+export default class Home { }
