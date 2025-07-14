@@ -87,20 +87,41 @@
 
 <h4 class="mt-4 mb-4">Education</h4>
 <mat-accordion>
-    @for (education of education$ | async; track education.institution) {
-    <mat-expansion-panel hideToggle>
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <div class="title">
-                <img [src]="education.logo" alt="logo" class="logo" width="30" height="30" />
-                <label>{{ education.institution }}</label>
-            </div>
-            <label class="fs-medium">{{ education.fromDate }} - {{ education.toDate }}</label>
+            <mat-panel-title class="flex items-center gap-2">
+                <img [src]="'/images/brands/placeholder.svg'" alt="logo" class="logo" width="30" height="30" />
+                University of Maryland, Baltimore County
+            </mat-panel-title>
+            <mat-panel-description>Aug 2023 - May 2025</mat-panel-description>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-            <label>{{ education.degree }}</label>
+            <div class="px-4">
+                <p>
+                    Graduate Assistant- Assisted faculty in teaching, and grading, contributing to improved learning
+                    outcomes.
+                </p>
+            </div>
         </ng-template>
     </mat-expansion-panel>
-    }
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="flex items-center gap-2">
+                <img [src]="'/images/brands/srm.png'" alt="logo" class="logo" width="30" height="30" />
+                SRM Institute of Science and Technology
+            </mat-panel-title>
+            <mat-panel-description>Jun 2014 - May 2018</mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+            <div class="px-4">
+                <ul class="list-decimal">
+                    <li>Master of Science in Software Engineering</li>
+                    <li>Bachelor of Technology in Computer Science and Engineering</li>
+                </ul>
+            </div>
+        </ng-template>
+    </mat-expansion-panel>
 </mat-accordion>
 
 <h4 class="mt-4 mb-4">Certifications</h4>
