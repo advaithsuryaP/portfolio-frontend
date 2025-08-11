@@ -4,14 +4,29 @@ export default [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'about',
+        redirectTo: 'about'
     },
     {
         path: 'about',
-        loadComponent: () => import('./about/about'),
+        loadComponent: () => import('./about/about.component'),
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'professional'
+            },
+            {
+                path: 'professional',
+                loadComponent: () => import('./about/professional/professional.component')
+            },
+            {
+                path: 'personal',
+                loadComponent: () => import('./about/personal/personal.component')
+            }
+        ]
     },
     {
         path: 'built',
-        loadComponent: () => import('./built/built'),
-    },
+        loadComponent: () => import('./built/built')
+    }
 ] as Routes;

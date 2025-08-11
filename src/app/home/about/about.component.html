@@ -1,12 +1,12 @@
-<div class="headline">
-    <div class="name">
+<div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center">
         <h1>Advaith Pandravada</h1>
         <h5>software engineer, sports enthusiast, can talk for hours</h5>
     </div>
 
-    <div class="description mt-4">
+    <div class="flex justify-end mt-4">
         <mat-slide-toggle labelPosition="before" [(ngModel)]="showProfessionalView" class="color-tertiary">
-            <div class="toggle">
+            <div class="flex items-center">
                 @if (showProfessionalView) {
                 <p>okay but <span class="color-primary">who am I</span> really?</p>
                 } @else {
@@ -18,10 +18,4 @@
     </div>
 </div>
 
-<div class="content">
-    @if (showProfessionalView) {
-    <app-professional />
-    } @else {
-    <app-personal />
-    }
-</div>
+<router-outlet />
