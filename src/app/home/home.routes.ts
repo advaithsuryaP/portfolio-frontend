@@ -13,14 +13,14 @@ export default [
             {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'professional'
+                redirectTo: 'whoami'
             },
             {
-                path: 'professional',
+                path: 'whoami',
                 loadComponent: () => import('./about/professional/professional.component')
             },
             {
-                path: 'personal',
+                path: 'whoamireally',
                 loadComponent: () => import('./about/personal/personal.component')
             }
         ]

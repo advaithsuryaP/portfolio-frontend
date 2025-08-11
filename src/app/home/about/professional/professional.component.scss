@@ -1,11 +1,3 @@
-.title {
-    gap: 0.5rem;
-    display: flex;
-    align-items: center;
-}
-
-:host ::ng-deep .mat-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+:host ::ng-deep mat-divider {
+    margin: 0.5rem 0;
 }

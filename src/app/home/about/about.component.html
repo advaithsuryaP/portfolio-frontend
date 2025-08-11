@@ -5,7 +5,11 @@
     </div>
 
     <div class="flex justify-end mt-4">
-        <mat-slide-toggle labelPosition="before" [(ngModel)]="showProfessionalView" class="color-tertiary">
+        <mat-slide-toggle
+            labelPosition="before"
+            [checked]="showProfessionalView"
+            (change)="toggleView()"
+            class="color-tertiary">
             <div class="flex items-center">
                 @if (showProfessionalView) {
                 <p>okay but <span class="color-primary">who am I</span> really?</p>

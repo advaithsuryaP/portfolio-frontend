@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
     selector: 'app-professional.component',
-    imports: [MatIconModule, MatExpansionModule],
+    imports: [MatIconModule, MatDividerModule],
     templateUrl: './professional.component.html',
     styleUrl: './professional.component.scss'
 })
-export class ProfessionalComponent {}
+export default class ProfessionalComponent {}
