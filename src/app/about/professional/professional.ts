@@ -3,9 +3,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
-    selector: 'app-professional.component',
+    selector: 'app-professional',
     imports: [MatIconModule, MatDividerModule],
-    templateUrl: './professional.component.html',
-    styleUrl: './professional.component.scss'
+    templateUrl: './professional.html',
+    styleUrl: './professional.scss'
 })
-export default class ProfessionalComponent {}
+export default class Professional {}

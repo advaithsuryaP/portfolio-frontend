@@ -9,10 +9,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     styleUrl: './sidebar.scss'
 })
 export class Sidebar {
-
     navigationItems: { label: string; route: string }[] = [
         { label: 'about', route: '/about' },
         { label: 'built', route: '/built' }
-    ]
-
+    ];
 }

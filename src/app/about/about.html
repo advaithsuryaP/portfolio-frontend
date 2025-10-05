@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center gap-2">
+    <h1>Advaith Pandravada</h1>
+    <div class="flex items-center gap-4 flex-wrap">
+        <a target="_blank" matTooltip="Mail" rel="noopener noreferrer" href="mailto:suryaadvaithp@gmail.com">
+            <app-icon src="/images/gmail.svg" alt="Mail" />
+        </a>
+        <a
+            target="_blank"
+            matTooltip="LinkedIn"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/advaithsurya">
+            <app-icon src="/images/linkedin.svg" alt="LinkedIn" />
+        </a>
+        <a target="_blank" matTooltip="GitHub" rel="noopener noreferrer" href="https://github.com/advaithsuryaP">
+            <app-icon src="/images/github.svg" alt="GitHub" />
+        </a>
+    </div>
+
+    <mat-slide-toggle labelPosition="before" [checked]="showProfessionalView" (change)="toggleView()">
+        <div class="flex items-center">
+            @if (showProfessionalView) {
+            <p>okay, but <span class="text-blue-600">who am I</span> really?</p>
+            } @else {
+            <p>idc, <span class="text-red-600">resume</span> please</p>
+            }
+            <mat-icon>arrow_forward</mat-icon>
+        </div>
+    </mat-slide-toggle>
+</div>
+
+<router-outlet />

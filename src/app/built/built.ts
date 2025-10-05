@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
     selector: 'app-built',
     imports: [],
     templateUrl: './built.html',
-    styleUrl: './built.scss',
+    styleUrl: './built.scss'
 })
 export default class Built {}

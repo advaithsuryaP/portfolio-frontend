@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Sidebar } from '../core/components/sidebar/sidebar';
 import { RouterOutlet } from '@angular/router';
+import { Sidebar } from './sidebar/sidebar';
 
 @Component({
     selector: 'app-home.component',

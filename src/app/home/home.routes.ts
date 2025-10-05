@@ -8,7 +8,7 @@ export default [
     },
     {
         path: 'about',
-        loadComponent: () => import('./about/about.component'),
+        loadComponent: () => import('../about/about'),
         children: [
             {
                 path: '',
@@ -17,16 +17,16 @@ export default [
             },
             {
                 path: 'whoami',
-                loadComponent: () => import('./about/professional/professional.component')
+                loadComponent: () => import('../about/professional/professional')
             },
             {
                 path: 'whoamireally',
-                loadComponent: () => import('./about/personal/personal.component')
+                loadComponent: () => import('../about/personal/personal')
             }
         ]
     },
     {
         path: 'built',
-        loadComponent: () => import('./built/built')
+        loadComponent: () => import('../built/built')
     }
 ] as Routes;
