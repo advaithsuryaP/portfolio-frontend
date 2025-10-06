@@ -7,6 +7,7 @@ export interface Experience {
     location: string;
     jobType?: string;
     imageUrl?: string;
+    isCurrent: boolean;
     accomplishments: string[];
 }
 
