@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Router, RouterOutlet } from '@angular/router';
-import Icon from '../ui/icon/icon';
+import Icon from '../ui/icon/icon.component';
 
 @Component({
     selector: 'app-about',

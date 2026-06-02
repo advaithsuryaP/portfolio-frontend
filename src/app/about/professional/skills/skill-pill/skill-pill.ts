@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import Icon from '../../../../ui/icon/icon';
+import Icon from '../../../../ui/icon/icon.component';
 import { Skill } from '../skill.interface';
 
 @Component({

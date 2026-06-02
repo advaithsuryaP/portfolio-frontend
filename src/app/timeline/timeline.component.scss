@@ -1,0 +1,39 @@
+.timeline-item {
+    position: relative;
+}
+
+.timeline-left-column {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    width: calc(6rem + 1rem + 0.75rem); // time width + gap + dot width
+    // Create the vertical line using border-right
+    border-right: 2px solid rgb(209 213 219); // bg-gray-300
+    padding-right: 1rem;
+    // Extend the border through the gap to connect with next item
+    // The border naturally extends, we just need to ensure it reaches
+    min-height: 100%;
+}
+
+// All items except the last one: extend border through gap
+.timeline-item:not(.timeline-item-last) .timeline-left-column {
+    // Extend border to bottom of item plus gap
+    padding-bottom: 1rem; // Gap size
+    margin-bottom: -1rem; // Negative margin to overlap with gap
+}
+
+// Last item: no border extension
+.timeline-item-last .timeline-left-column {
+    border-right: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: relative;
+    z-index: 2; // Ensure dot appears above the border line
+    background-color: rgb(209 213 219); // bg-gray-300
+    // Position dot to center on the border
+    margin-left: -0.375rem; // Half dot width (0.75rem / 2) to center on border
+}

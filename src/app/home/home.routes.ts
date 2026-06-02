@@ -4,7 +4,7 @@ export default [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'about'
+        loadComponent: () => import('../timeline/timeline.component')
     },
     {
         path: 'about',
@@ -24,9 +24,5 @@ export default [
                 loadComponent: () => import('../about/personal/personal')
             }
         ]
-    },
-    {
-        path: 'built',
-        loadComponent: () => import('../built/built')
     }
 ] as Routes;
