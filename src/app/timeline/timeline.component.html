@@ -1,149 +1,73 @@
-<div class="flex flex-col gap-4 py-4">
-    <div class="timeline-item flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">June 2025 -</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/quantellia.svg'" [alt]="'Quantellia'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>Quantellia LLC</h6>
-                <p class="italic fs-medium">Senior Software Engineer</p>
+<div class="timeline-layout py-8">
+    <div class="timeline-grid" [style.grid-template-rows]="gridTemplateRows">
+        @for (tick of ticks; track tick.slug) {
+            <div class="tick-cell" [style.grid-row]="tick.rowIndex + 1">
+                <span
+                    class="tick-row"
+                    [matTooltip]="tick.label"
+                    matTooltipPosition="right"
+                    [attr.aria-label]="tick.label"
+                    (mouseenter)="onTickHover(tick.rowIndex)"
+                    (mouseleave)="onHoverEnd()"
+                >
+                    <span
+                        class="tick"
+                        [class.tick--year]="tick.isYearMark"
+                        [class.tick--highlighted]="isHighlighted(tick.rowIndex)"
+                        [class.tick--elongated]="isElongated(tick.rowIndex)"
+                    ></span>
+                </span>
             </div>
-            <div class="flex flex-col">
-                <p>
-                    Led frontend architecture for a multi-tenant AI-driven decision intelligence platform built on World
-                    Modeler APIs.
-                </p>
-                <p>
-                    Built AI/ML workflows transforming complex model outputs into real-time visualizations and
-                    predictive insights.
-                </p>
-                <p>
-                    Developed modular, reusable component libraries supporting scalable deployments across client
-                    environments.
-                </p>
-            </div>
-        </div>
-    </div>
 
-    <div class="timeline-item flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">Jan 2024 - June 2025</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/ardent.svg'" [alt]="'Ardent Privacy Inc.'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>Ardent Privacy Inc.</h6>
-                <p class="italic fs-medium">Software Engineer</p>
+            <div class="milestone-cell" [style.grid-row]="tick.rowIndex + 1">
+                @for (milestone of milestonesAt(tick.rowIndex); track milestone.entityId + milestone.type) {
+                    <p
+                        class="milestone-label"
+                        (mouseenter)="onMilestoneHover(tick.rowIndex)"
+                        (mouseleave)="onHoverEnd()"
+                    >
+                        {{ milestone.label }}
+                    </p>
+                }
             </div>
-            <div class="flex flex-col">
-                <p>
-                    Built a multi-tenant privacy automation platform from scratch, supporting both cloud and on-prem
-                    deployments.
-                </p>
-                <p>
-                    Implemented modules for role-based access, dynamic workflows, notifications, logging, file handling,
-                    and i18n.
-                </p>
-                <p>
-                    Architected REST API and integration layers enabling seamless interaction across internal and
-                    external systems.
-                </p>
-                <p>Coordinated distributed engineering efforts to align releases, architecture, and deployments.</p>
-            </div>
-        </div>
-    </div>
+        }
 
-    <div class="timeline-item flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">Aug 2023 - May 2025</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/umbc.svg'" [alt]="'UMBC'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>UMBC</h6>
-                <p class="italic fs-medium">Graduate Student</p>
-            </div>
-        </div>
-    </div>
+        @for (span of spans; track span.entity.id) {
+            <article
+                class="employment-span"
+                [style.grid-row]="span.rowStart + ' / ' + span.rowEnd"
+                (mouseenter)="onContentHover(span.highlightTopRow, span.highlightBottomRow)"
+                (mouseleave)="onHoverEnd()"
+            >
+                <div class="employment-span__content">
+                    <div class="employment-span__header flex items-center gap-2">
+                        @if (span.entity.icon) {
+                            <div class="employment-span__icon border border-gray-200 rounded-lg p-1">
+                                <app-icon
+                                    [src]="span.entity.icon"
+                                    [alt]="span.entity.title"
+                                    [width]="32"
+                                    [height]="32"
+                                />
+                            </div>
+                        }
+                        <div class="flex flex-col">
+                            <h6 class="employment-span__heading">{{ span.heading }}</h6>
+                            @if (span.entity.location) {
+                                <p class="italic fs-medium">{{ span.entity.location }}</p>
+                            }
+                        </div>
+                    </div>
 
-    <div class="timeline-item flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">Jan 2022 - Aug 2023</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/ixfi.svg'" [alt]="'IXFI'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>IXFI</h6>
-                <p class="italic fs-medium">Software Engineer</p>
-            </div>
-            <div class="flex flex-col">
-                <p>
-                    Led frontend architecture by adopting an Nx monorepo, streamlining development across IXFI
-                    applications.
-                </p>
-                <p>
-                    Developed low latency trading, market, orders, and wallet modules handling 450K+ users with real
-                    time updates.
-                </p>
-                <p>
-                    Improved initial load and runtime performance by over 60% through SSR, CDNs, RxJS, and advanced
-                    caching.
-                </p>
-                <p>Built multi-language, multi-theme, and multi-currency capabilities for global user adaptability.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="timeline-item flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">Jan 2018 - Dec 2021</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/infosys.svg'" [alt]="'Infosys Limited'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>Infosys Limited</h6>
-                <p class="italic fs-medium">Senior Systems Engineer</p>
-            </div>
-            <div class="flex flex-col">
-                <p>
-                    Developed high-traffic enterprise web apps for high profile clients like Microsoft, Intel, and LKQ
-                    Corp.
-                </p>
-                <p>Improved state management and caching patterns to increase multi-tab performance across modules.</p>
-                <p>Established a shared UI design system to maintain consistency across development teams.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="timeline-item timeline-item-last flex items-center gap-4">
-        <div class="timeline-left-column">
-            <time class="w-24">Jun 2014 - May 2018</time>
-            <div class="timeline-dot w-3 h-3 bg-gray-300 rounded-full"></div>
-        </div>
-        <div class="border border-gray-200 rounded-md p-2">
-            <app-icon [src]="'images/srm.webp'" [alt]="'srm'" [width]="40" [height]="40" />
-        </div>
-        <div class="flex flex-col gap-2">
-            <div class="flex flex-col">
-                <h6>SRM Institute of Science and Technology</h6>
-                <p class="italic fs-medium">Bachelor of Technology in Information Technology</p>
-            </div>
-        </div>
+                    @if (span.entity.description?.length) {
+                        <ul class="employment-span__points">
+                            @for (point of span.entity.description; track point) {
+                                <li>{{ point }}</li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </article>
+        }
     </div>
 </div>

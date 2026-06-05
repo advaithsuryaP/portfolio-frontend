@@ -1,10 +1,27 @@
 import { Routes } from '@angular/router';
-import HomeComponent from './home/home.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
-        loadChildren: () => import('./home/home.routes')
+        loadComponent: () => import('./home/home.component'),
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'timeline'
+            },
+            {
+                path: 'timeline',
+                loadChildren: () => import('./timeline/timeline.routes')
+            },
+            {
+                path: 'about',
+                loadChildren: () => import('./about/about.routes')
+            },
+            {
+                path: 'ai',
+                loadChildren: () => import('./advaith-intelligence/advaith-intelligence.routes')
+            }
+        ]
     }
 ];

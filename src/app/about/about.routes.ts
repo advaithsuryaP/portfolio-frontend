@@ -4,10 +4,6 @@ export default [
     {
         path: '',
         pathMatch: 'full',
-        loadComponent: () => import('../timeline/timeline.component')
-    },
-    {
-        path: 'about',
         loadComponent: () => import('../about/about'),
         children: [
             {
