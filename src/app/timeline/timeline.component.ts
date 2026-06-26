@@ -1,74 +1,51 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import IconComponent from '../ui/icon/icon.component';
 import { TIMELINE_CONSTANTS } from './contracts/timeline.constants';
-import { EmploymentSpan, TimelineMilestone, TimelineService, TimelineTick } from './services/timeline.service';
+import { MomentLabel, TimelineService, TimelineTick } from './services/timeline.service';
+
+const DEFAULT_HIGHLIGHT = 'var(--mat-sys-primary)';
 
 @Component({
     selector: 'app-timeline',
     templateUrl: './timeline.component.html',
-    imports: [MatTooltipModule, IconComponent],
     styleUrl: './timeline.component.scss'
 })
 export default class TimelineComponent {
     private readonly timelineService = inject(TimelineService);
 
     readonly rowHeight = TIMELINE_CONSTANTS.rowHeight;
+    readonly rowGap = TIMELINE_CONSTANTS.rowGap;
     readonly ticks: TimelineTick[] = this.buildTicks();
-    readonly milestones = this.timelineService.buildMilestones(this.ticks);
-    readonly spans: EmploymentSpan[] = this.buildSpans();
+    readonly moments = this.timelineService.buildMoments(this.ticks);
     readonly gridTemplateRows = `repeat(${this.ticks.length}, minmax(${this.rowHeight}px, auto))`;
 
-    private readonly highlightedRows = signal<ReadonlySet<number>>(new Set());
-    private readonly elongatedRow = signal<number | null>(null);
+    private readonly highlightedRow = signal<number | null>(null);
+    readonly highlightColor = signal<string | null>(null);
 
-    milestonesAt(rowIndex: number): TimelineMilestone[] {
-        return this.timelineService.milestonesAt(this.milestones, rowIndex);
+    momentsAt(rowIndex: number): MomentLabel[] {
+        return this.timelineService.momentsAt(this.moments, rowIndex);
     }
 
     isHighlighted(rowIndex: number): boolean {
-        return this.highlightedRows().has(rowIndex);
-    }
-
-    isElongated(rowIndex: number): boolean {
-        return this.elongatedRow() === rowIndex;
+        return this.highlightedRow() === rowIndex;
     }
 
     onTickHover(rowIndex: number): void {
-        this.highlightedRows.set(new Set([rowIndex]));
-        this.elongatedRow.set(rowIndex);
+        this.highlightedRow.set(rowIndex);
+        this.highlightColor.set(DEFAULT_HIGHLIGHT);
     }
 
-    onMilestoneHover(rowIndex: number): void {
-        this.highlightedRows.set(new Set([rowIndex]));
-        this.elongatedRow.set(null);
-    }
-
-    onContentHover(topRow: number, bottomRow: number): void {
-        const rows = new Set<number>();
-        const start = Math.min(topRow, bottomRow);
-        const end = Math.max(topRow, bottomRow);
-
-        for (let row = start; row <= end; row += 1) {
-            rows.add(row);
-        }
-
-        this.highlightedRows.set(rows);
-        this.elongatedRow.set(null);
+    onMomentHover(rowIndex: number, color: string): void {
+        this.highlightedRow.set(rowIndex);
+        this.highlightColor.set(color);
     }
 
     onHoverEnd(): void {
-        this.highlightedRows.set(new Set());
-        this.elongatedRow.set(null);
+        this.highlightedRow.set(null);
+        this.highlightColor.set(null);
     }
 
     private buildTicks(): TimelineTick[] {
         const now = new Date();
-        return this.timelineService.buildTicks(now.getFullYear(), now.getMonth());
-    }
-
-    private buildSpans(): EmploymentSpan[] {
-        const now = new Date();
-        return this.timelineService.buildEmploymentSpans(this.ticks, now.getFullYear(), now.getMonth());
+        return this.timelineService.buildTicks({ year: now.getFullYear(), month: now.getMonth() });
     }
 }

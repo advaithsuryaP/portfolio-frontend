@@ -1,73 +1,40 @@
 <div class="timeline-layout py-8">
-    <div class="timeline-grid" [style.grid-template-rows]="gridTemplateRows">
+    <div
+        class="timeline-grid"
+        [style.row-gap]="rowGap"
+        [style.grid-template-rows]="gridTemplateRows"
+        [style.--highlight-color]="highlightColor() ?? 'transparent'"
+        (mouseleave)="onHoverEnd()"
+    >
         @for (tick of ticks; track tick.slug) {
-            <div class="tick-cell" [style.grid-row]="tick.rowIndex + 1">
+            <time
+                class="date-cell"
+                [class.date-cell--year]="tick.isYearMark"
+                [class.date-cell--highlighted]="isHighlighted(tick.rowIndex)"
+                [style.grid-row]="tick.rowIndex + 1"
+                [attr.datetime]="tick.slug"
+                (mouseenter)="onTickHover(tick.rowIndex)"
+            >
+                {{ tick.label }}
+            </time>
+
+            <div class="tick-cell" [style.grid-row]="tick.rowIndex + 1" (mouseenter)="onTickHover(tick.rowIndex)">
                 <span
-                    class="tick-row"
-                    [matTooltip]="tick.label"
-                    matTooltipPosition="right"
-                    [attr.aria-label]="tick.label"
-                    (mouseenter)="onTickHover(tick.rowIndex)"
-                    (mouseleave)="onHoverEnd()"
-                >
-                    <span
-                        class="tick"
-                        [class.tick--year]="tick.isYearMark"
-                        [class.tick--highlighted]="isHighlighted(tick.rowIndex)"
-                        [class.tick--elongated]="isElongated(tick.rowIndex)"
-                    ></span>
-                </span>
+                    class="tick"
+                    [class.tick--year]="tick.isYearMark"
+                    [class.tick--highlighted]="isHighlighted(tick.rowIndex)"
+                    [class.tick--elongated]="isHighlighted(tick.rowIndex)"
+                ></span>
             </div>
 
-            <div class="milestone-cell" [style.grid-row]="tick.rowIndex + 1">
-                @for (milestone of milestonesAt(tick.rowIndex); track milestone.entityId + milestone.type) {
-                    <p
-                        class="milestone-label"
-                        (mouseenter)="onMilestoneHover(tick.rowIndex)"
-                        (mouseleave)="onHoverEnd()"
-                    >
-                        {{ milestone.label }}
+            <div class="moment-cell" [style.grid-row]="tick.rowIndex + 1">
+                @for (moment of momentsAt(tick.rowIndex); track moment.id) {
+                    <p class="moment-label" (mouseenter)="onMomentHover(tick.rowIndex, moment.color)">
+                        <span class="moment-dot" [style.background-color]="moment.color"></span>
+                        <span class="moment-text">{{ moment.label }}</span>
                     </p>
                 }
             </div>
-        }
-
-        @for (span of spans; track span.entity.id) {
-            <article
-                class="employment-span"
-                [style.grid-row]="span.rowStart + ' / ' + span.rowEnd"
-                (mouseenter)="onContentHover(span.highlightTopRow, span.highlightBottomRow)"
-                (mouseleave)="onHoverEnd()"
-            >
-                <div class="employment-span__content">
-                    <div class="employment-span__header flex items-center gap-2">
-                        @if (span.entity.icon) {
-                            <div class="employment-span__icon border border-gray-200 rounded-lg p-1">
-                                <app-icon
-                                    [src]="span.entity.icon"
-                                    [alt]="span.entity.title"
-                                    [width]="32"
-                                    [height]="32"
-                                />
-                            </div>
-                        }
-                        <div class="flex flex-col">
-                            <h6 class="employment-span__heading">{{ span.heading }}</h6>
-                            @if (span.entity.location) {
-                                <p class="italic fs-medium">{{ span.entity.location }}</p>
-                            }
-                        </div>
-                    </div>
-
-                    @if (span.entity.description?.length) {
-                        <ul class="employment-span__points">
-                            @for (point of span.entity.description; track point) {
-                                <li>{{ point }}</li>
-                            }
-                        </ul>
-                    }
-                </div>
-            </article>
         }
     </div>
 </div>
